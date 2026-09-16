@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<!-- saved from url=(0037)file:///D:/web%20designing/about.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Creative Pet Shop</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #e75c34;
+            background-attachment: fixed; /* Keeps background fixed during scroll */
+            color: #333;
+            margin: 0;
+        }
+
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            padding: 20px 0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        header .container {
+            width: 80%;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center; /* Center aligns the content */
+            align-items: center;
+        }
+
+        header .logo {
+            font-size: 1.8rem;
+            color: #ff7043;
+        }
+
+        .about-section, .mission-section, .review-section {
+            padding: 50px 20px;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.9);
+            margin: 20px auto;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .review-form {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .review-form input, .review-form textarea, .review-form button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .review-form button {
+            background: #ff7043;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        .review-form button:hover {
+            background: #e75c34;
+        }
+
+        .radio-group {
+            display: flex;
+            justify-content: center;
+            margin: 10px 0;
+        }
+
+        .radio-group label {
+            margin: 0 10px;
+        }
+
+        .star-rating {
+            display: flex;
+            justify-content: center;
+            flex-direction: row-reverse;
+            margin: 10px 0;
+        }
+
+        .star-rating input[type="radio"] {
+            display: none;
+        }
+
+        .star-rating label {
+            font-size: 1.5rem;
+            color: #ccc;
+            cursor: pointer;
+            padding: 0 5px;
+            transition: color 0.2s ease-in-out;
+        }
+
+        .star-rating input[type="radio"]:checked ~ label {
+            color: #ff7043;
+        }
+
+        .star-rating label:hover,
+        .star-rating label:hover ~ label {
+            color: #ff7043;
+        }
+
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 20px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1 class="logo">Creative Pet Shop</h1>
+        </div>
+    </header>
+
+    <section id="about" class="about-section">
+        <h1>About Creative Pet Shop</h1>
+        <p>Welcome to Creative Pet Shop, your one-stop destination for premium pet supplies and expert pet management services! We take pride in offering a wide variety of products and services tailored to meet the needs of pet owners and their beloved companions. Established with love and care for pets, we’ve been serving the community for over 10 years!</p>
+    </section>
+
+    <div id="mission" class="mission-section">
+        <h1>Our Mission</h1>
+        <p>At Creative Pet Shop, we aim to nurture the bond between pets and their owners through exceptional products, services, and care. Our mission is to ensure every pet enjoys a happy, healthy, and fulfilling life!</p>
+    </div>
+
+    <section id="reviews" class="review-section">
+        <h1>Share Your Feedback</h1>
+        <p>We'd love to hear your thoughts about us! Please take a moment to leave a review or answer a few quick questions.</p>
+        <form id="reviewForm" class="review-form">
+            <input type="text" id="reviewer-name" placeholder="Your Name" required="">
+            <textarea id="review" rows="5" placeholder="Your Review" required=""></textarea>
+            <p>Rate your experience:</p>
+            <div class="star-rating">
+                <input type="radio" id="star5" name="rating" value="5" required="">
+                <label for="star5" title="5 stars">★</label>
+                <input type="radio" id="star4" name="rating" value="4">
+                <label for="star4" title="4 stars">★</label>
+                <input type="radio" id="star3" name="rating" value="3">
+                <label for="star3" title="3 stars">★</label>
+                <input type="radio" id="star2" name="rating" value="2">
+                <label for="star2" title="2 stars">★</label>
+                <input type="radio" id="star1" name="rating" value="1">
+                <label for="star1" title="1 star">★</label>
+            </div>
+            <p>How did you hear about us?</p>
+            <textarea id="how" rows="2" placeholder="e.g., Social Media, Friends, etc." required=""></textarea>
+            <p>Would you recommend us to others?</p>
+            <div class="radio-group">
+                <label><input type="radio" name="recommend" value="Yes" required=""> Yes</label>
+                <label><input type="radio" name="recommend" value="No" required=""> No</label>
+            </div>
+            <button type="submit">Submit Feedback</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>© 2025 Creative Pet Shop | All Rights Reserved</p>
+    </footer>
+
+    <script>
+        const reviewForm = document.getElementById('reviewForm');
+
+        reviewForm.addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent default form submission
+
+            // Get form inputs
+            const name = document.getElementById('reviewer-name').value.trim();
+            const review = document.getElementById('review').value.trim();
+            const how = document.getElementById('how').value.trim();
+            const recommend = document.querySelector('input[name="recommend"]:checked');
+            const rating = document.querySelector('input[name="rating"]:checked');
+
+            // Check for empty fields
+            if (!name || !review || !how || !recommend || !rating) {
+                alert('Please fill out all fields before submitting.');
+                return;
+            }
+
+            // Show success popup
+            alert('Feedback sent successfully! Thank you for your input.');
+
+            // Reset the form
+            reviewForm.reset();
+        });
+    </script>
+
+
+</body></html>

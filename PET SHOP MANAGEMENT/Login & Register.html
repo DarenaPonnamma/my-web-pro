@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<!-- saved from url=(0037)file:///D:/web%20designing/login.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login &amp; Register</title>
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: url('background-mainlogo.jpg') no-repeat center center fixed; /* Replace with your image path */
+            background-size: cover; /* Ensures the image covers the screen */
+            background-position: center; /* Centers the background image */
+            background-repeat: no-repeat; /* Prevents tiling */
+            position: relative;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            overflow: hidden;
+        }
+
+        /* Gradient Overlay */
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5); /* Dark transparent overlay */
+            z-index: 1;
+        }
+
+        /* Logo Styling */
+        .logo {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80%; /* Adjust size as needed */
+            height: auto; /* Maintain aspect ratio */
+            z-index: 2;
+            filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.5)); /* Add a subtle shadow */
+        }
+
+        /* Form Container */
+        #formContainer {
+            text-align: center;
+            z-index: 3; /* Ensure forms appear above the background and logo */
+            display: flex;
+            flex-direction: column; /* Stack items vertically */
+            justify-content: center; /* Center vertically */
+            align-items: center; /* Center horizontally */
+            height: 100%; /* Full-screen centering */
+        }
+
+        h1 {
+            color: #ffcc33;
+            font-size: 3rem;
+            text-shadow: 2px 4px 10px rgba(0, 0, 0, 0.7);
+            margin-bottom: 30px;
+        }
+
+        .form {
+            display: none;
+            background: rgba(255, 255, 255, 0.9); /* Translucent white */
+            padding: 30px;
+            width: 400px;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            text-align: center;
+        }
+
+        .form.active {
+            display: block;
+        }
+
+        .form h2 {
+            color: #ff7e5f;
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+            text-align: left;
+            color: #333;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+
+        input:focus {
+            border-color: #fd5c33;
+            outline: none;
+            box-shadow: 0 0 10px rgba(248, 88, 48, 0.5);
+        }
+
+        .button {
+            background: linear-gradient(45deg, #ff7e5f, #feb47b);
+            color: white;
+            font-size: 1.2rem;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .button:active {
+            transform: translateY(1px);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 500px) {
+            .form {
+                width: 90%;
+            }
+
+            .form h2 {
+                font-size: 1.5rem;
+            }
+
+            input, .button {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Full-Screen Logo -->
+    <img src="./Login &amp; Register_files/loginlogo.png" alt="Pet Shop Logo" class="logo">
+
+    <div id="formContainer">
+        <h1>Pet Shop Management</h1>
+
+        <!-- Login Form -->
+        <form id="loginForm" class="form active">
+            <h2>Login</h2>
+            <label for="loginUsername">Username:</label>
+            <input type="text" id="loginUsername" name="username" placeholder="Enter your username" required="">
+            <label for="loginPassword">Password:</label>
+            <input type="password" id="loginPassword" name="password" placeholder="Enter your password" required="">
+            <button type="button" id="loginButton" class="button">Login</button>
+            <button type="button" id="switchToRegister" class="button">Register</button>
+        </form>
+
+        <!-- Registration Form -->
+        <form id="registerForm" class="form">
+            <h2>Register</h2>
+            <label for="registerUsername">Username:</label>
+            <input type="text" id="registerUsername" name="username" placeholder="Choose a username" required="">
+            <label for="registerPassword">Password:</label>
+            <input type="password" id="registerPassword" name="password" placeholder="Create a password" required="">
+            <label for="registerEmail">Email:</label>
+            <input type="email" id="registerEmail" name="email" placeholder="Enter your email" required="">
+            <button type="button" id="registerButton" class="button">Register</button>
+            <button type="button" id="switchToLogin" class="button">Back to Login</button>
+        </form>
+    </div>
+
+    <script>
+        // Toggle between Login and Register forms
+        const loginForm = document.getElementById('loginForm');
+        const registerForm = document.getElementById('registerForm');
+        const switchToRegister = document.getElementById('switchToRegister');
+        const switchToLogin = document.getElementById('switchToLogin');
+
+        switchToRegister.addEventListener('click', () => {
+            loginForm.classList.remove('active');
+            registerForm.classList.add('active');
+        });
+
+        switchToLogin.addEventListener('click', () => {
+            registerForm.classList.remove('active');
+            loginForm.classList.add('active');
+        });
+
+        // Login functionality
+        document.getElementById('loginButton').addEventListener('click', function () {
+            const username = document.getElementById('loginUsername').value.trim();
+            const password = document.getElementById('loginPassword').value.trim();
+
+            if (username && password) {
+                window.location.href = "home.html";
+            } else {
+                alert("Please fill out all fields to login.");
+            }
+        });
+
+        // Registration functionality
+        document.getElementById('registerButton').addEventListener('click', function () {
+            const username = document.getElementById('registerUsername').value.trim();
+            const password = document.getElementById('registerPassword').value.trim();
+            const email = document.getElementById('registerEmail').value.trim();
+
+            if (username && password && email) {
+                alert(`Thank you for registering, ${username}!`);
+                registerForm.reset();
+                registerForm.classList.remove('active');
+                loginForm.classList.add('active');
+            } else {
+                alert("Please fill out all fields to register.");
+            }
+        });
+    </script>
+
+
+</body></html>
